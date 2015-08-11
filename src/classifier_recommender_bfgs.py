@@ -1,7 +1,6 @@
 import numpy as np
 from numpy.random import random, choice
 import scipy.optimize
-from sklearn import datasets
  
 def predict_classifications(train_set, test_object, clf_table):
     """
@@ -35,7 +34,6 @@ def predict_classifications(train_set, test_object, clf_table):
     print "classifications for test object", predict_classifications(X, test_obj, Y)
     """
     n_obj, n_feat, n_clfs = train_set.shape[0], train_set.shape[1], clf_table.shape[1]
-    clf_table
     # add intercept terms to X
     X = np.vstack([np.array([1]*n_obj), train_set.T])
     # initialize Theta with small random values
@@ -78,9 +76,8 @@ def recommend_classifier(train_set, test_object, clf_table):
     return np.argmax(predict_classifications(train_set, test_object, clf_table))
 
 if __name__ == "__main__":
-    
+    from sklearn import datasets
     iris = datasets.load_iris()
-    print iris
     # simulate classification table for iris dataset
     clf_table_iris = np.array([[0.5*(random() + 1) 
                     for j in xrange(5)]
